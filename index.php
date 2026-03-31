@@ -1,7 +1,11 @@
 <?php
-session_start();
+// 1. Cargar la sesión PRIMERO (Solo una vez)
 require_once __DIR__ . '/helpers/session.php'; 
+
+// 2. Cargar la configuración (Para que BaseDatos.php tenga las credenciales)
 require_once __DIR__ . '/config.php'; 
+
+// 3. Cargar la clase de Base de Datos (Asegúrate que el archivo se llame exactamente así)
 require_once __DIR__ . '/BaseDatos.php';
 
 // Mostrar mensaje de registro exitoso
