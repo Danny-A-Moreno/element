@@ -3,27 +3,19 @@
 class BaseDatos {
     private $pdo;
 
-   public function __construct() {
-    $host = DB_HOST;
-    $port = DB_PORT;
-    $db   = DB_NAME;
-    $user = DB_USER;
-    $pass = DB_PASS;
-
-    // Añadimos el puerto explícitamente en el DSN
-    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
+public function __construct() {
+    $dsn = "mysql:host=" . DB_HOST . ";port=3306;dbname=" . DB_NAME . ";charset=utf8mb4";
 
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        // Esto ayuda a evitar problemas de DNS en redes de contenedores
-        PDO::ATTR_EMULATE_PREPARES   => false,
+        // Forzamos un tiempo de espera de 10 segundos
+        PDO::ATTR_TIMEOUT            => 10, 
     ];
 
     try {
-        $this->pdo = new PDO($dsn, $user, $pass, $options);
+        $this->pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
     } catch (PDOException $e) {
-        // Esto nos dirá si el error cambió
         die('Error de conexión: ' . $e->getMessage());
     }
 }
