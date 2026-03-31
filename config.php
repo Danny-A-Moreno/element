@@ -1,6 +1,6 @@
 <?php
 // Datos de conexión de Clever Cloud
-define('DB_HOST', 'butqlct4sops6f3gimib-mysql.services.clever-cloud.com'); 
+define('DB_HOST', 'butqlct4sops6f3gimib-mysql.services.clever-cloud.com');
 define('DB_NAME', 'butqlct4sops6f3gimib');
 define('DB_USER', 'unncd9ladcewvvjd');
 define('DB_PASS', 'lvKNKZytzSLnGyWDgFRi');
