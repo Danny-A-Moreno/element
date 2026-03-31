@@ -450,9 +450,9 @@ $whatsapp_numero = '573125781377';
                     <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'ADMIN'): ?>
                         <a href="#" class="icon-link"><img src="imagenes/logos/profile.png" alt="Mi cuenta"></a>
                         <div class="dropdown-content">
-                            <a href="/element/admin/dashboard.php">Dashboard</a>
-                            <a href="/element/admin/productos.php">Productos</a>
-                            <a href="/element/admin/pedidos.php">Pedidos</a>
+                            <a href="/admin/dashboard.php">Dashboard</a>
+                            <a href="/admin/productos.php">Productos</a>
+                            <a href="/admin/pedidos.php">Pedidos</a>
                             <a href="logout.php">Cerrar sesión</a>
                         </div>
                     <?php else: ?>
