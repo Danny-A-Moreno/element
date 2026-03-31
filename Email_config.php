@@ -1,8 +1,7 @@
 <?php
-// ===== CONFIGURACIÓN DE CORREO =====
-define('MAIL_HOST',     'smtp.gmail.com');
-define('MAIL_PORT',     587);
-define('MAIL_USERNAME', 'danny13moreno45@gmail.com');
-define('MAIL_PASSWORD', 'oboc zrbf iowg xrcy');  // Contraseña de aplicación Gmail
-define('MAIL_FROM',     'danny13moreno45@gmail.com');
-define('MAIL_FROM_NAME','ELEMENT Tiendas');
+define('MAIL_HOST',      getenv('MAIL_HOST')      ?: 'smtp.gmail.com');
+define('MAIL_PORT',      getenv('MAIL_PORT')      ?: 587);
+define('MAIL_USERNAME',  getenv('MAIL_USERNAME')  ?: '');
+define('MAIL_PASSWORD',  getenv('MAIL_PASSWORD')  ?: '');
+define('MAIL_FROM',      getenv('MAIL_FROM')      ?: '');
+define('MAIL_FROM_NAME', getenv('MAIL_FROM_NAME') ?: 'ELEMENT Tiendas');
