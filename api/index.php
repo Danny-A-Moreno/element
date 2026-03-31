@@ -1,5 +1,8 @@
 <?php
 session_start();
+require_once __DIR__ . '/helpers/session.php'; 
+require_once __DIR__ . '/config.php'; 
+require_once __DIR__ . '/BaseDatos.php';
 
 // Mostrar mensaje de registro exitoso
 if (isset($_SESSION['registro_exitoso'])) {
