@@ -16,8 +16,8 @@ function enviarCodigoVerificacion(string $correo, string $nombre, string $codigo
         $mail->SMTPAuth   = true;
         $mail->Username   = MAIL_USERNAME;
         $mail->Password   = MAIL_PASSWORD;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = MAIL_PORT;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
         $mail->CharSet    = 'UTF-8';
 
         // Remitente y destinatario
