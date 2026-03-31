@@ -3,26 +3,30 @@
 class BaseDatos {
     private $pdo;
 
-    public function __construct() {
-        $host = DB_HOST;
-        $db   = DB_NAME;
-        $user = DB_USER;
-        $pass = DB_PASS;
-        $charset = 'utf8mb4';
+   public function __construct() {
+    $host = DB_HOST;
+    $port = DB_PORT;
+    $db   = DB_NAME;
+    $user = DB_USER;
+    $pass = DB_PASS;
 
-        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    // Añadimos el puerto explícitamente en el DSN
+    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4";
 
-        $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ];
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        // Esto ayuda a evitar problemas de DNS en redes de contenedores
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
 
-        try {
-            $this->pdo = new PDO($dsn, $user, $pass, $options);
-        } catch (PDOException $e) {
-            die('Error de conexión: ' . $e->getMessage());
-        }
+    try {
+        $this->pdo = new PDO($dsn, $user, $pass, $options);
+    } catch (PDOException $e) {
+        // Esto nos dirá si el error cambió
+        die('Error de conexión: ' . $e->getMessage());
     }
+}
 
     public function query($sql, $params = []) {
         $stmt = $this->pdo->prepare($sql);
