@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once __DIR__ . '/BaseDatos.php';
-require_once __DIR__ . '/email_service.php';
+require_once __DIR__ . '/Email_service.php';
+require_once __DIR__ . '/config.php';
 
 if (!isset($_SESSION['correo_verificacion'])) {
     header('Location: registro.php');
